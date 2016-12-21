@@ -41,6 +41,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.preference.CheckBoxPreference;
 import android.preference.PreferenceGroup;
+import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import nya.miku.wishmaster.R;
 import nya.miku.wishmaster.api.AbstractVichanModule;
@@ -450,5 +451,16 @@ public class InfinityModule extends AbstractVichanModule {
             if (response != null) response.release();
         }
     }
-    
+
+    @NonNull
+    @Override
+    protected String getAttachmentPath(String boardName, String ext, String tim) {
+        return super.getAttachmentPath(boardName, ext, tim);
+    }
+
+    @NonNull
+    @Override
+    protected String getAttachmentThumbnailPath(String boardName, String ext, String tim) {
+        return super.getAttachmentThumbnailPath(boardName, ext, tim);
+    }
 }
