@@ -455,12 +455,19 @@ public class InfinityModule extends AbstractVichanModule {
     @NonNull
     @Override
     protected String getAttachmentPath(String boardName, String ext, String tim) {
+        if (tim.length() == 64) {
+            return "/file_store/" + tim + ext;
+        }
         return super.getAttachmentPath(boardName, ext, tim);
     }
 
     @NonNull
     @Override
     protected String getAttachmentThumbnailPath(String boardName, String ext, String tim) {
+        if (tim.length() == 64) {
+            return "/file_store/thumb/" + tim + ext;
+        }
+
         return super.getAttachmentThumbnailPath(boardName, ext, tim);
     }
 }
