@@ -70,6 +70,7 @@ import nya.miku.wishmaster.lib.org_json.JSONArray;
 import nya.miku.wishmaster.lib.org_json.JSONObject;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 
 public abstract class AbstractVichanModule extends AbstractWakabaModule {
     private static final Pattern ATTACHMENT_EMBEDDED_LINK = Pattern.compile("<a[^>]*href=\"([^\">]*)\"[^>]*>");
@@ -277,15 +278,26 @@ public abstract class AbstractVichanModule extends AbstractWakabaModule {
             attachment.isSpoiler = isSpoiler;
             String tim = object.optString("tim", "");
             if (tim.length() > 0) {
-                attachment.thumbnail = isSpoiler || attachment.type == AttachmentModel.TYPE_AUDIO ? null :
-                    ("/" + boardName + "/thumb/" + tim + ".jpg");
-                attachment.path = "/" + boardName + "/src/" + tim + ext;
+                attachment.thumbnail = isSpoiler || attachment.type == AttachmentModel.TYPE_AUDIO ?
+                        null :
+                        getAttachmentThumbnailPath(boardName, ext, tim);
+                attachment.path = getAttachmentPath(boardName, ext, tim);
                 return attachment;
             }
         }
         return null;
     }
-    
+
+    @NonNull
+    protected String getAttachmentPath(String boardName, String ext, String tim) {
+        return "/" + boardName + "/src/" + tim + ext;
+    }
+
+    @NonNull
+    protected String getAttachmentThumbnailPath(String boardName, String ext, String tim) {
+        return "/" + boardName + "/thumb/" + tim + ".jpg";
+    }
+
     @Override
     public String sendPost(SendPostModel model, ProgressListener listener, CancellableTask task) throws Exception {
         UrlPageModel urlModel = new UrlPageModel();
