@@ -57,7 +57,7 @@ public class TabsSwitcher {
     public void switchTo(TabModel tabModel, FragmentManager fragmentManager, boolean force) {
         try {
             if (!force) {
-                if (currentId != null && currentId.equals(Long.valueOf(tabModel.id))) {
+                if (currentId != null && currentId.longValue() == tabModel.id) {
                     if (tabModel.forceUpdate && currentFragment != null && currentFragment instanceof BoardFragment) {
                         ((BoardFragment) currentFragment).update();
                         tabModel.forceUpdate = false;
@@ -85,7 +85,7 @@ public class TabsSwitcher {
      * @param fragmentManager менеджер фрагментов
      */
     public void switchTo(int virtualPosition, FragmentManager fragmentManager) {
-        if (currentId != null && currentId.equals(Long.valueOf(virtualPosition))) return;
+        if (currentId != null && currentId.longValue() == virtualPosition) return;
         Fragment newFragment = null;
         switch (virtualPosition) {
             case TabModel.POSITION_NEWTAB:
