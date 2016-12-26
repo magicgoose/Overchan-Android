@@ -19,7 +19,6 @@ repositories {
 
 dependencies {
     compile 'com.android.support:support-v4:25.0.1'
-    compile 'ch.acra:acra:4.9.1'
     compile 'org.apache.commons:commons-lang3:3.5'
     compile 'cz.msebera.android:httpclient:4.4.1.2'
     compile 'com.esotericsoftware:kryo:4.0.0'
