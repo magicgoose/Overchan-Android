@@ -17,7 +17,6 @@ Overchan Android (Meta Imageboard Client) is an application for browsing imagebo
 
 * [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (JRE alone is not sufficient)
 * [Android SDK](https://developer.android.com/sdk/index.html#Other)
-* [Android NDK](https://developer.android.com/tools/sdk/ndk/index.html#Downloads)
 * [Apache Ant](http://ant.apache.org/bindownload.cgi) or [Eclipse with ADT](http://developer.android.com/sdk/installing/installing-adt.html)
 
 ### Using Ant
